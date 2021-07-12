@@ -2,7 +2,6 @@ const express = require('express') // server software
 const mongoose = require('mongoose') //import mongoose ODM
 const bodyParser = require('body-parser') // parser middleware
 const path = require('path')
-var Razorpay = require('razorpay') //Razorpay module
 const url = 'mongodb://localhost/dragDrop' //url for db connection
 const session = require('express-session')  // session middleware
 const passport = require('passport')  // authentication
@@ -13,9 +12,9 @@ const port = process.env.PORT || 4002
 
 
 const User =  require('./models/user') //importing the schema
-const myEvent = new events.EventEmitter(); //new event
+
 const app = express(); //create an instance for the express
-mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true})
+mongoose.connect(url, {useNewUrlParser:true, useUnifiedTopology: true}) //creating the connection with mongodb database
 			.then(() => console.log("db connected..."))
 			.catch((err) => console.log(err))
 
@@ -76,7 +75,7 @@ app.post('/register', function(req, res) {
             }
 
             else{
-              res.render('success')
+              res.render('success')                                                           //renders success page when successfully registered
               console.log({success: true, message: "Your account has been saved"})
             }
 
