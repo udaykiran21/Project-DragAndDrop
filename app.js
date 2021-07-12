@@ -1,4 +1,4 @@
-const express = require('express') // server software
+const express = require('express') // import Express library
 const mongoose = require('mongoose') //import mongoose ODM
 const bodyParser = require('body-parser') // parser middleware
 const path = require('path')
