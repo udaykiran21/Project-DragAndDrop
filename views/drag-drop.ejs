@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1, #div2, #div3 {
+  float: left;
+  width: 200px;
+  min-height: 75px;
+  height: auto;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.task{
+  width: auto;
+    height: auto;
+    border: 1px solid red;
+    padding: 2px;
+    text-align: justify;
+    margin: 4px 0;
+}
+
+
+div.tasks {
+  margin-top: -16px;
+  margin-bottom: 4px;
+  position: centre;
+  padding: 1px;
+  border: 1px solid blue;
+} 
+
+</style>
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev,el) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  el.appendChild(document.getElementById(data));
+}
+
+function ToDoList(){
+    var ListN = document.createElement("p");
+    var N = document.getElementById("work").value;
+    var t = document.createTextNode(N);
+    ListN.appendChild(t);
+    ListN.setAttribute("draggable", "true")
+    ListN.setAttribute("ondragstart", "drag(event)")
+    ListN.className="task"
+    ListN.id=N
+   document.getElementById("div1").appendChild(ListN);
+  
+   document.getElementById("work").value = "";
+   
+}   
+
+</script>
+</head>
+<body>
+
+<h2>Drag and Drop</h2>
+<p>Drag the text between the three blocks</p>
+
+<div id="div1" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+<div class="tasks" style="text-align:center;">To do</div>
+  <div>
+    <input type='text' id="work" placeholder = "Enter your task here">
+    <input type="submit" onClick="ToDoList()" value="Add task"/>
+  </div>
+  
+  
+  <div class="task" draggable="true" ondragstart="drag(event)" id="drag1">task1
+  </div>
+  
+</div>
+
+
+
+<div id="div2" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+  
+      <div class="tasks" style="text-align:center;">In progress
+        </div>
+    
+</div>
+
+<div id="div3" ondrop="drop(event, this)" ondragover="allowDrop(event)">
+  <div class="tasks" style="text-align:center;">done
+     </div>
+</div>
+
+
+<a href="/logout"><button>Logout</button></a>
+</body>
+
+</html>
