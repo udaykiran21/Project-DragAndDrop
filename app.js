@@ -7,7 +7,6 @@ const session = require('express-session')  // session middleware
 const passport = require('passport')  // authentication
 const connectEnsureLogin = require('connect-ensure-login') //authorization
 const logout = require('express-passport-logout')
-const events = require('events') //events class to use event emitters
 const port = process.env.PORT || 4002
 
 
